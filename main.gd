@@ -42,9 +42,9 @@ func _ready():
 
 func _on_MenuButton_pressed():
 	var p = JavaScript.eval("window.location.href")
-	p = p if p != null else "something when wrong:"
+	p = p if p != null else "url_error:?"
+	p=p.split("?")[0]
 	p += "?p=" + dna.genes.replace(" ", "")
-
 	OS.clipboard = p
 	JavaScript.eval("navigator.clipboard.writeText('" +p+ "')")
 
