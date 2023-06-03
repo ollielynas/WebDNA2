@@ -23,12 +23,30 @@ caret_blink_speed = 0.5
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 0.5
-margin_top = 48.0
-margin_right = 40.5
-margin_bottom = 78.0
+margin_left = 20.5
+margin_top = 73.0
+margin_right = 60.5
+margin_bottom = 103.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.8, 0.8 )
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "A"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_left = -3.5
+margin_top = 37.0
+margin_right = 20.5
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 3, 1 )
+color = Color( 0.94902, 0.870588, 0.345098, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -3.5
+margin_top = 52.0
+margin_right = 20.5
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 3, 1 )
+color = Color( 0.690196, 0.690196, 0.690196, 1 )
 
 [connection signal="text_changed" from="." to="." method="_on_Gene_text_changed"]

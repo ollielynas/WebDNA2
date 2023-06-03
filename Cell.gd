@@ -24,6 +24,8 @@ enum InstructionType {
 	None,
 }
 
+
+
 enum GeneType {
 	Stop,
 	If_,
@@ -37,11 +39,12 @@ enum GeneType {
 
 export var genes = ""
 export var gene_type = []
+var in_if = []
 
 func _onload():
 	for _i in range(100):
 		gene_type.append(GeneType.None)
-	
+		in_if.append(false)
 
 
 func get_gene_from_dna_index(index:int):
@@ -50,19 +53,21 @@ func get_gene_from_dna_index(index:int):
 	return genes[index]
 
 func set_gene_from_dna_index(n:int, gene:String):
-
 	if n < 0 or n >= genes.length():
+		print("set_gene_from_dna_index: n out of range")
 		genes += " ".repeat(n - genes.length() + 1)
-		
-	genes[n] = gene
+	
+	genes = genes.substr(0, n) + gene + genes.substr(n+1)
+	print(genes)
 	update_genes()
 	
 
 func get_gene(n:int):
 	if n == -2:
 		return "~"
-	
-	var gene = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="[n]
+	if n > 63:
+		return " "
+	var gene = "abcdefghijklmnopqrstuvwxyz0123456789+/=ABCDEFGHIJKLMNOPQRSTUVWXYZ"[n]
 	if gene == null:
 		return " "
 	
@@ -71,34 +76,43 @@ func get_gene(n:int):
 func gene_to_int(c:String):
 	if c == "~":
 		return -2
-	if c == "*":
+	if c == " ":
 		return -1
 	
-	return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".find(c)
+
+	return "abcdefghijklmnopqrstuvwxyz0123456789+/=ABCDEFGHIJKLMNOPQRSTUVWXYZ".find(c)
 
 
 
 func update_genes():
 	print("update_genes")
+	in_if = []
+	gene_type = []
 
-	for i in range(100):
-		while i >= gene_type.size()-2:
-			gene_type.append(GeneType.None)
-		
-		while i >= genes.length()-2:
-			genes += " "
-
+	for _bundled in range(105):
+		gene_type.append(GeneType.None)
+		in_if.append(false)
+	var i = 0
+	var b = false
+	while i < genes.length():
 		match gene_to_int(genes[i]):
+			-1:
+				gene_type[i] = GeneType.None
 			
 			InstructionType.Stop:
+				b=false
 				gene_type[i] = GeneType.Stop
 			InstructionType.DoOnce, InstructionType.IfChemicalAbove, InstructionType.IfChemicalBelow, InstructionType.IfChemicalPresent, InstructionType.IfChemicalNotPresent:
 				gene_type[i] = GeneType.If_
-				if genes[i] in [InstructionType.IfChemicalAbove, InstructionType.IfChemicalBelow, InstructionType.IfChemicalPresent, InstructionType.IfChemicalNotPresent]:
-					if i < genes.length():i+=1
+				b=true
+				if gene_to_int(genes[i]) in [InstructionType.IfChemicalAbove, InstructionType.IfChemicalBelow, InstructionType.IfChemicalPresent, InstructionType.IfChemicalNotPresent]:
+					i+=1
+					if genes.length() <= i:genes += " "
+
 					gene_type[i] = GeneType.Chemical
-				if genes[i] in [InstructionType.IfChemicalAbove, InstructionType.IfChemicalBelow]:
-					if i < genes.length():i+=1
+				if gene_to_int(genes[i]) in [InstructionType.IfChemicalAbove, InstructionType.IfChemicalBelow]:
+					i+=1
+					if genes.length() <= i:genes += " "
 					gene_type[i] = GeneType.Quantity
 			
 			InstructionType.GrowActiveConsumer, InstructionType.GrowActiveExcreter:
@@ -106,9 +120,17 @@ func update_genes():
 		
 			InstructionType.ConsumeChemical, InstructionType.ExcreteChemical:
 				gene_type[i] = GeneType.Instruction
-				if i < genes.length():i+=1
+				i+=1
 				gene_type[i] = GeneType.Chemical
-			
+			_: 
+				gene_type[i] = GeneType.None
+		i+=1
+		in_if[i] = b
+	for rem in range(i, 100):
+		gene_type[rem] = GeneType.None
+		in_if[rem] = b
+
+
 
 
 func set_dna(string: String):
@@ -144,4 +166,4 @@ func get_color_from_type(n:int):
 			return Color(0.399719, 0.713829, 0.991875)
 		GeneType.None:
 			# black
-			return Color(0.80603, 0.84671, 0.96875)
+			return Color(0.945313, 0.945313, 0.945313)

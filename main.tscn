@@ -48,4 +48,9 @@ custom_fonts/font = SubResource( 1 )
 text = "Copy Link"
 underline = 2
 
+[node name="Debug" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
