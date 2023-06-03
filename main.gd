@@ -22,6 +22,7 @@ func _ready():
 	if p != null:
 		dna.set_dna(p)
 		wheel.update()
+		wheel.update_all_children()
 
 	for i in range(64):
 		table.append({"command":"", "value":"%s"% (float(i)/64), "key":i, "Chemical":"", "char": dna.get_gene(i)})

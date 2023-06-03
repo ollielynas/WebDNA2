@@ -45,6 +45,7 @@ func _onload():
 	for _i in range(100):
 		gene_type.append(GeneType.None)
 		in_if.append(false)
+	update_genes()
 
 
 func get_gene_from_dna_index(index:int):

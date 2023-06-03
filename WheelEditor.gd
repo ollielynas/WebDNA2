@@ -28,6 +28,8 @@ func _ready():
 	
 	print("size %s" % children.size())
 	update()
+	update_all_children()
+	
 
 # func _process(delta):
 # 	pass
@@ -43,5 +45,6 @@ func set_dna(dna):
 func update_all_children():
 	for i in children:
 		i.update()
+		i.set("text", Dna.get_gene_from_dna_index(i.index))
 		
-
+		
