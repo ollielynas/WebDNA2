@@ -40,3 +40,4 @@ func update():
 		_:
 			set_label("")
 	color_rect.set("visible", dna.in_if[index])
+	
