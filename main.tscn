@@ -1,15 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://WheelEditor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://doc_theme.tres" type="Theme" id=3]
 [ext_resource path="res://Roboto_Mono/static/RobotoMono-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://purple.tres" type="StyleBox" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 15
 outline_size = 14
 outline_color = Color( 0.580392, 0.662745, 0.780392, 0 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 4.0
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Theme" id=5]
 
 [node name="Node2D" type="Control"]
 anchor_right = 1.0
@@ -24,8 +33,12 @@ margin_left = 1.0
 margin_right = 1.0
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
+anchor_left = 0.048
+anchor_top = 0.173
 anchor_right = 0.376
 anchor_bottom = 1.0
+margin_left = -49.2
+margin_top = -103.8
 margin_right = -0.400024
 
 [node name="WheelEditor" parent="." instance=ExtResource( 2 )]
@@ -48,9 +61,101 @@ custom_fonts/font = SubResource( 1 )
 text = "Copy Link"
 underline = 2
 
-[node name="Debug" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="Panel" type="Panel" parent="."]
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 16.0
+margin_right = 337.0
+margin_bottom = -16.0
 theme = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="Panel"]
+anchor_left = 0.077
+anchor_top = 0.042
+anchor_right = 0.077
+anchor_bottom = 0.07
+margin_left = -0.0240021
+margin_top = 0.143999
+margin_right = 111.976
+margin_bottom = 0.240002
+theme = ExtResource( 3 )
+text = "Placeholder"
+
+[node name="OptionButton" type="OptionButton" parent="Panel"]
+anchor_left = 0.077
+anchor_top = 0.085
+anchor_right = 0.615
+anchor_bottom = 0.114
+margin_left = -0.0240021
+margin_top = -0.279999
+margin_right = 0.119995
+margin_bottom = 0.247993
+theme = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "First"
+
+[node name="Title2" type="Label" parent="Panel"]
+anchor_left = 0.744
+anchor_top = 0.141
+anchor_right = 0.744
+anchor_bottom = 0.171
+margin_left = -0.128006
+margin_top = -0.0880051
+margin_right = 76.872
+margin_bottom = -0.128006
+rect_pivot_offset = Vector2( 16, 8 )
+theme = ExtResource( 3 )
+text = "A"
+
+[node name="OptionButton2" type="OptionButton" parent="Panel"]
+anchor_left = 0.077
+anchor_top = 0.141
+anchor_right = 0.615
+anchor_bottom = 0.169
+margin_left = -0.0240021
+margin_top = -0.0880051
+margin_right = 0.119995
+margin_bottom = 1.00799
+custom_styles/normal = ExtResource( 5 )
+text = "Chemecal"
+
+[node name="Title3" type="Label" parent="Panel"]
+anchor_left = 0.744
+anchor_top = 0.085
+anchor_right = 0.744
+anchor_bottom = 0.114
+margin_left = -0.128006
+margin_top = -0.279999
+margin_right = 76.872
+margin_bottom = 0.247993
+rect_pivot_offset = Vector2( 16, 8 )
+theme = ExtResource( 3 )
+text = "A"
+
+[node name="Consentration" type="HSlider" parent="Panel"]
+anchor_left = 0.077
+anchor_top = 0.197
+anchor_right = 0.615
+anchor_bottom = 0.225
+margin_left = -0.0240021
+margin_top = 0.103996
+margin_right = 0.119995
+margin_bottom = 0.199997
+theme = SubResource( 5 )
+tick_count = 16
+ticks_on_borders = true
+
+[node name="Title4" type="Label" parent="Panel"]
+anchor_left = 0.744
+anchor_top = 0.197
+anchor_right = 0.744
+anchor_bottom = 0.227
+margin_left = -0.128006
+margin_top = 0.103996
+margin_right = 76.872
+margin_bottom = 0.0639954
+rect_pivot_offset = Vector2( 16, 8 )
+theme = ExtResource( 3 )
+text = "A"
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]

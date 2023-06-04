@@ -14,13 +14,14 @@ onready var color_rect = get_node("ColorRect")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass	
+	# select_all()
 
 
 func _on_Gene_text_changed(new_text:String):
-	print("Gene text changed")
 	dna.set_gene_from_dna_index(index, new_text.substr(0,1) if new_text.substr(0,1).length() > 0 else " ")
 	wheel.update_all_children()
 	
+	select_all()
 
 func set_label(string:String):
 	label.set("text", string)
@@ -31,13 +32,21 @@ func set_in_if(i:bool):
 
 
 func update():
+	var gene_int = dna.gene_to_int(text)
 	self_modulate = dna.get_color_from_type(dna.get_type(index))
-	match dna.get_type(index):
-		dna.GeneType.Quantity:
-			set_label("%s" % dna.gene_to_int(dna.get_gene(index)))
-		dna.GeneType.Chemical:
-			set_label(wheel.table[dna.gene_to_int(text)]["Chemical"])
-		_:
-			set_label("")
+	set_label(dna.get_name(index))
+
 	color_rect.set("visible", dna.in_if[index])
-	
+
+
+func _on_Gene_focus_entered():
+	select_all()
+
+
+func _on_Gene_text_change_rejected(rejected_substring:String):
+	text = rejected_substring
+	dna.set_gene_from_dna_index(index, rejected_substring.substr(0,1) if rejected_substring.substr(0,1).length() > 0 else " ")
+	wheel.update_all_children()
+
+
+

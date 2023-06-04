@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=2]
+[gd_resource type="Theme" load_steps=20 format=2]
 
 [ext_resource path="res://Roboto_Mono/static/RobotoMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://White.tres" type="StyleBox" id=2]
@@ -7,11 +7,40 @@
 bg_color = Color( 0.293732, 0.464296, 0.683594, 1 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 22
+size = 12
 outline_color = Color( 1, 1, 1, 0 )
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=28]
+size = 15
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 1, 0.972549, 0.921569, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 1, 0.972549, 0.921569, 1 )
+
 [sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="DynamicFont" id=30]
+size = 21
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.898039, 0.898039, 0.756863, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 9
+shadow_color = Color( 0, 0, 0, 0.211765 )
+shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.901961, 0.819608, 0.909804, 1 )
@@ -19,8 +48,13 @@ bg_color = Color( 0.901961, 0.819608, 0.909804, 1 )
 [sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0.784314, 0.858824, 0.854902, 1 )
 
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0.917647, 0.921569, 0.815686, 1 )
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0.976471, 0.972549, 0.952941, 1 )
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.486275, 0.843137, 0.67451, 1 )
@@ -48,8 +82,13 @@ Button/styles/normal = SubResource( 14 )
 Control/fonts/Font = SubResource( 7 )
 Control/styles/Black = null
 Control/styles/Grey = null
-GridContainer/constants/hseparation = 4
-GridContainer/constants/vseparation = 4
+GridContainer/constants/hseparation = 2
+GridContainer/constants/vseparation = 2
+ItemList/colors/font_color = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+ItemList/colors/font_color_selected = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+ItemList/fonts/font = SubResource( 28 )
+ItemList/styles/bg = SubResource( 26 )
+ItemList/styles/bg_focus = SubResource( 27 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
 Label/constants/line_spacing = 4
 Label/constants/shadow_as_outline = 0
@@ -57,8 +96,11 @@ Label/fonts/font = SubResource( 7 )
 Label/styles/normal = SubResource( 20 )
 LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_selected = Color( 0.921569, 0.878431, 0.878431, 0.278431 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.878431, 0.878431, 0.878431, 0.501961 )
+LineEdit/colors/selection_color = Color( 1, 1, 1, 0.168627 )
 LineEdit/constants/minimum_spaces = 0
+LineEdit/fonts/font = SubResource( 30 )
 LineEdit/styles/focus = ExtResource( 2 )
 LineEdit/styles/normal = ExtResource( 2 )
 LineEdit/styles/read_only = ExtResource( 2 )
@@ -67,6 +109,7 @@ MenuButton/colors/font_color_disabled = Color( 1, 0, 0, 0.301961 )
 MenuButton/colors/font_color_focus = Color( 0.164706, 0.168627, 0.545098, 1 )
 MenuButton/colors/font_color_hover = Color( 0.32549, 0.517647, 0.92549, 1 )
 MenuButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+Panel/styles/panel = SubResource( 24 )
 PopupDialog/styles/panel = SubResource( 22 )
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
@@ -86,7 +129,7 @@ PopupMenu/styles/labeled_separator_right = null
 PopupMenu/styles/panel = SubResource( 21 )
 PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/separator = null
-ScrollContainer/styles/bg = SubResource( 19 )
+ScrollContainer/styles/bg = SubResource( 29 )
 Tabs/colors/font_color_bg = Color( 0.772549, 0.772549, 0.772549, 1 )
 Tabs/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Tabs/colors/font_color_fg = Color( 0.94, 0.94, 0.94, 1 )

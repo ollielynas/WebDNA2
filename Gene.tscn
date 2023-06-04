@@ -1,19 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://doc_theme.tres" type="Theme" id=1]
 [ext_resource path="res://Gene.gd" type="Script" id=2]
+[ext_resource path="res://Roboto_Mono/static/RobotoMono-Regular.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 3 )
 
 [node name="Gene" type="LineEdit"]
 self_modulate = Color( 0.80603, 0.84671, 0.96875, 1 )
-anchor_left = 0.5
+anchor_left = 0.301
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.301
 anchor_bottom = 0.5
-margin_left = -12.5
+margin_left = -8.22403
 margin_top = -300.0
-margin_right = 3.5
+margin_right = 7.77597
 margin_bottom = -270.0
-rect_pivot_offset = Vector2( 12.5, 300 )
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 8, 300 )
 theme = ExtResource( 1 )
 align = 1
 max_length = 1
@@ -31,6 +38,7 @@ rect_rotation = 90.0
 rect_scale = Vector2( 0.8, 0.8 )
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -49,4 +57,6 @@ margin_bottom = 60.0
 rect_pivot_offset = Vector2( 3, 1 )
 color = Color( 0.690196, 0.690196, 0.690196, 1 )
 
+[connection signal="focus_entered" from="." to="." method="_on_Gene_focus_entered"]
+[connection signal="text_change_rejected" from="." to="." method="_on_Gene_text_change_rejected"]
 [connection signal="text_changed" from="." to="." method="_on_Gene_text_changed"]
