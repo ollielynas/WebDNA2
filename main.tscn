@@ -42,12 +42,14 @@ margin_top = -103.8
 margin_right = -0.400024
 
 [node name="WheelEditor" parent="." instance=ExtResource( 2 )]
-anchor_left = 0.383
-anchor_right = 1.0
-anchor_bottom = 0.987
-margin_left = -7.57501
-margin_right = 0.0
-margin_bottom = 7.79999
+anchor_left = 0.672
+anchor_top = 0.5
+anchor_right = 0.672
+anchor_bottom = 0.5
+margin_left = -303.8
+margin_top = -300.0
+margin_right = 336.2
+margin_bottom = 300.0
 
 [node name="MenuButton" type="LinkButton" parent="."]
 anchor_left = 1.0
