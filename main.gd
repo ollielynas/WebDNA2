@@ -31,5 +31,5 @@ func _on_MenuButton_pressed():
 	p += "?p=" + dna.genes.replace(" ", "")
 	p=p.replace("?p=", "")
 	OS.clipboard = p
-	JavaScript.eval("navigator.clipboard.writeText('" +p+ "')")
+	JavaScript.eval("navigator.clipboard.writeText('"+"?p=" +p+ "')")
 

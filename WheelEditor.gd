@@ -36,7 +36,7 @@ func _ready():
 
 	print("size %s" % children.size())
 	update()
-	
+
 
 # func _process(delta):
 # 	pass
